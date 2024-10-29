@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <title>Document</title>
+
+</head>
+<body>
+<h1>Staff Details</h1>
+<div class="table">
+    <div class="table-row">
+        <div class="table-cell">Name</div>
+        <div class="table-cell">Title</div>
+        <div class="table-cell">Salary</div>
+    </div>
+    <!--<div class="table-row">
+        <div class="table-cell" th:text="${staff.StaffName}"></div>
+        <div class="table-cell" th:text="${staff.StaffTitle}"></div>
+        <div class="table-cell" th:text="${staff.StaffSalary}"></div>
+    </div>-->
+    <div class="table-row" th:object="${staff}">
+        <div class="table-cell" th:text="*{StaffName}"></div>
+        <div class="table-cell" th:text="*{StaffTitle}"></div>
+        <div class="table-cell" th:text="*{StaffSalary}" >
+            <!--<p th:if="*{StaffSalary > 2000}">Tamam</p>
+            <p th:unless="*{StaffSalary > 2000}">yaaa</p>-->
+<!--            <p th:text="*{StaffSalary > 2000 ? 'Tamamm':'you need mor'}"></p>-->
+        </div>
+    </div>
+
+</div>
+<div th:switch="${staff.StaffName}">
+    <p th:case="'Rami'">Hi Rami</p>
+    <p th:case="'sami'">Hi sami</p>
+    <p th:case="*">Not found</p>
+</div>
+
+
+</body>
+</html>
